@@ -1,0 +1,12 @@
+---
+- hosts: runner
+  gather_facts: yes
+  become: yes
+
+  pre_tasks:
+    - name: Dist Upgrade
+      include: tasks/dist_upgrade.yml
+
+  roles:
+    - role: docker-machine
+    - role: gitlab-runner

@@ -1,0 +1,13 @@
+---
+# tasks file for gitlab-runner
+- name: Add gitlab official repository
+  shell: |
+    set -o pipefail
+    curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | /bin/bash
+  changed_when: false
+
+- name: Install gitlab runner
+  apt:
+    name: gitlab-runner
+    update_cache: yes
+  notify: enable gitlab-runner

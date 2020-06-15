@@ -1,0 +1,12 @@
+---
+- name: Install python
+  raw: apt install -y python
+
+- name: Run dist upgrade
+  apt:
+    upgrade: dist
+    update_cache: yes
+    autoremove: yes
+
+- name: Update GRUB
+  command: update-grub

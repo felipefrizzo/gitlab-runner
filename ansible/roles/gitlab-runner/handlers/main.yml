@@ -1,0 +1,26 @@
+---
+# handlers file for gitlab-runner
+- name: enable gitlab-runner
+  systemd:
+    name: gitlab-runner.service
+    state: started
+    enabled: true
+    daemon-reload: yes
+
+- name: start gitlab-runner
+  service:
+    name: gitlab-runner
+    state: started
+  become: yes
+
+- name: restart gitlab-runner
+  service:
+    name: gitlab-runner
+    state: restarted
+  become: yes
+
+- name: reload gitlab-runner
+  service:
+    name: gitlab-runner
+    state: reloaded
+  become: yes
